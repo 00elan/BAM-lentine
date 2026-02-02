@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
         position: absolute;
         width: 90%;
         max-width: 420px;
-        padding: 40px 30px;
+        padding: 40px 5px;
         background: rgba(255, 255, 255, 0.78);
         backdrop-filter: blur(14px);
         border-radius: 28px;
@@ -110,30 +110,53 @@
         font-size: 1rem;
         cursor: pointer;
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .replay:hover {
         transform: scale(1.08);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
       }
+
+      .header-image {
+        position: absolute;
+        top: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .header-image img {
+        width: 140px;
+        max-width: 40vw;
+        border-radius: 50%;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        background: white;
+      }
+
+      .screen {
+        margin-top: 110px;
+      }
     </style>
   </head>
 
   <body onclick="nextScreen()">
-    <!-- Optional Music -->
-    <audio id="bgMusic" loop>
-      <source
-        src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_38a3b49e62.mp3"
-        type="audio/mpeg" />
-    </audio>
+    <div class="header-image">
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/053/907/453/large_2x/adorable-girl-angel-with-nimbus-and-wings-cute-baby-cartoon-character-in-cupid-or-cherub-costume-illustration-vector.jpg"
+        alt="Cherub illustration" />
+    </div>
 
     <!-- Screen 1 -->
     <div class="screen active">
-      <h1>Hey, Cherubim 💫</h1>
+      <h1>Hey, Cherubim</h1>
       <p>
-        Some days don’t need a label<br />
-        to feel a little more special.
+        Valentine’s Day doesn’t need much.<br />
+        Just a moment that feels real.
       </p>
       <div class="hint">tap anywhere</div>
     </div>
@@ -141,8 +164,8 @@
     <!-- Screen 2 -->
     <div class="screen">
       <p>
-        Today happens to be one of those days - soft, warm, and meant to be
-        shared.
+        Today is a pause - nothing loud, nothing forced. Just a reminder that
+        presence matters.
       </p>
       <div class="hint">tap to continue</div>
     </div>
@@ -150,43 +173,33 @@
     <!-- Screen 3 -->
     <div class="screen">
       <p>
-        And since you’re named after
-        <span class="name">celestial guardians</span>, I guess you’re officially
-        the one watching over me now.
+        Your name carries meaning, but who you are carries more - steady,
+        thoughtful, quietly reassuring.
       </p>
       <div class="hint">tap again</div>
     </div>
 
     <!-- Screen 4 -->
     <div class="screen">
-      <p>Not a bad role for a Valentine’s gift, right?</p>
       <p>
-        Hope today treats you gently - as cool, kind, and calming as you are. 💙
+        I hope today meets you with ease, and gives back even a fraction of what
+        you offer others.
       </p>
       <div class="hint">one last tap</div>
     </div>
 
     <!-- Screen 5 -->
     <div class="screen">
-      <h1>💗</h1>
+      <h1>🤍</h1>
       <div class="from">From: <strong>Elan</strong></div>
-      <button class="replay" onclick="replay(event)">Replay 💫</button>
+      <button class="replay" onclick="replay(event)">Replay</button>
     </div>
 
     <script>
       const screens = document.querySelectorAll(".screen");
       let current = 0;
-      let musicStarted = false;
 
       function nextScreen() {
-        if (!musicStarted) {
-          document
-            .getElementById("bgMusic")
-            .play()
-            .catch(() => {});
-          musicStarted = true;
-        }
-
         screens[current].classList.remove("active");
         current++;
 
