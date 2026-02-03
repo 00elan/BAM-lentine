@@ -153,14 +153,14 @@
   </style>
 </head>
 
-<body onclick="nextScreen()">
+<body>
   <div class="header-image">
     <img
       src="https://static.vecteezy.com/system/resources/previews/053/907/453/large_2x/adorable-girl-angel-with-nimbus-and-wings-cute-baby-cartoon-character-in-cupid-or-cherub-costume-illustration-vector.jpg"
       alt="Cherub illustration" />
   </div>
 
-  <div class="screen active">
+  <div class="screen active" onclick="nextScreen()">
     <h1>Hey, Cherubim</h1>
     <p>
       Valentine’s Day doesn’t need much.<br />
@@ -169,7 +169,7 @@
     <div class="hint">tap anywhere</div>
   </div>
 
-  <div class="screen">
+  <div class="screen" onclick="nextScreen()">
     <p>
       Today is a pause - nothing loud, nothing forced. Just a reminder that
       presence matters.
@@ -177,7 +177,7 @@
     <div class="hint">tap to continue</div>
   </div>
 
-  <div class="screen">
+  <div class="screen" onclick="nextScreen()">
     <p>
       Your name carries meaning, but who you are carries more - steady,
       thoughtful, quietly reassuring.
@@ -185,7 +185,7 @@
     <div class="hint">tap again</div>
   </div>
 
-  <div class="screen">
+  <div class="screen" onclick="nextScreen()">
     <p>
       I hope today meets you with ease, and gives back even a fraction of what
       you offer others.
@@ -193,7 +193,7 @@
     <div class="hint">almost done, tap again</div>
   </div>
 
-  <div class="screen">
+  <div class="screen" onclick="nextScreen()">
     <h1>🤍</h1>
     <div class="from">From: <strong>Elan</strong></div>
     <div class="hint">one last tap</div>
@@ -211,6 +211,7 @@
     let current = 0;
 
     function nextScreen() {
+
       screens[current].classList.remove("active");
       current++;
 
@@ -232,8 +233,9 @@
       }
     }
     function replay(event) {
-      event.stopPropagation();
-      location.reload();
+      screens[current].classList.remove("active");
+      current = 0;
+      screens[current].classList.add("active");
     }
   </script>
 </body>
