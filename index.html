@@ -136,6 +136,7 @@
             transparent 1px,
             transparent 28px
           );
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border-radius: 28px;
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
@@ -226,6 +227,24 @@
           transform: translateY(0);
         }
       }
+
+      .header-image {
+        position: absolute;
+        top: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .header-image img {
+        width: 140px;
+        max-width: 40vw;
+        border-radius: 50%;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        background: white;
+      }
     </style>
   </head>
 
@@ -243,7 +262,12 @@
       <div class="letter">💌</div>
     </div>
 
-    <!-- LETTER PAGES -->
+    <div class="header-image">
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/053/907/453/large_2x/adorable-girl-angel-with-nimbus-and-wings-cute-baby-cartoon-character-in-cupid-or-cherub-costume-illustration-vector.jpg"
+        alt="Cherub illustration" />
+    </div>
+
     <div class="screen" onclick="nextScreen()">
       <h1>Hey, Cherubim</h1>
       <p>
@@ -298,18 +322,18 @@
       let current = 0;
       let opened = false;
 
-      function openEnvelope() {
-        if (opened) return;
-        opened = true;
+      // function openEnvelope() {
+      //   if (opened) return;
+      //   opened = true;
 
-        envelope.classList.add("open");
+      //   envelope.classList.add("open");
 
-        setTimeout(() => {
-          envelope.style.display = "none";
-          screens[0].classList.add("active");
-          spawnHearts();
-        }, 900);
-      }
+      //   setTimeout(() => {
+      //     envelope.style.display = "none";
+      //     screens[0].classList.add("active");
+      //     spawnHearts();
+      //   }, 900);
+      // }
 
       function nextScreen() {
         screens[current].classList.remove("active");
